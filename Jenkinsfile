@@ -18,7 +18,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
-                nexusPolicyEvaluation advancedProperties: '', failBuildOnNetworkError: false, iqApplication: selectedApplication('GrantID1'), iqStage: 'build', jobCredentialsId: ''
+                nexusPolicyEvaluation advancedProperties: '', failBuildOnNetworkError: false, iqApplication: selectedApplication('GrantID1'), iqScanPatterns: [[scanPattern: '**/*.js'], [scanPattern: '**/*.zip']], iqStage: 'build', jobCredentialsId: ''
             }
         }
         stage('Deliver') {
